@@ -1,4 +1,37 @@
-﻿#Requires AutoHotkey v2.0
+; ============================================================
+; SCRIPT SUMMARY — MYOB Purchase Deletion Automation
+; ============================================================
+; Purpose:
+; This script automates the process of searching and deleting
+; purchase records in MYOB using a list of codes from Excel.
+;
+; Main Workflow:
+; 1. Open Excel file in background via COM.
+; 2. Read purchase codes sequentially from Column A.
+; 3. Activate MYOB window.
+; 4. For each code:
+;    - Open search (Ctrl+Shift+F)
+;    - Enter code wrapped in quotes
+;    - Execute search and open purchase
+;    - Prompt user for confirmation
+;        • Yes → delete purchase (Alt+E → D)
+;        • No  → skip record
+; 5. Move to next row until:
+;    - Empty cell encountered, or
+;    - Debug limit reached (row > 3)
+; 6. Close Excel without saving and exit.
+;
+; Hotkeys:
+; Ctrl + Esc → Exit script immediately
+; F9         → Pause / Resume execution
+;
+; Notes:
+; - Uses UI automation (keystrokes), so MYOB must be active.
+; - Delay timing may need adjustment depending on performance.
+; - Designed for semi-automated operation with manual confirmation.
+; ============================================================
+
+#Requires AutoHotkey v2.0
 #SingleInstance Force
 SetTitleMatchMode 2
 
